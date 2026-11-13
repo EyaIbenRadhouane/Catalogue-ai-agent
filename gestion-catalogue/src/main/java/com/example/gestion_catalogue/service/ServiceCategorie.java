@@ -1,6 +1,7 @@
 package com.example.gestion_catalogue.service;
 
 import com.example.gestion_catalogue.entities.Categorie;
+import com.example.gestion_catalogue.entities.Produit;
 import com.example.gestion_catalogue.respository.CategorieRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,13 @@ public class ServiceCategorie implements IServiceCategorie{
 
     @Override
     public void supprimerCategorie(Long id) {
-        categorieRepository.deleteById(id);
+        Categorie c = categorieRepository.findById(id).orElse(null);
+        if (c != null) {
+            for (Produit p : c.getProduits()) {
+                p.setCategorie(null);
+            }
+            categorieRepository.deleteById(id);
+        }
     }
 
     @Override

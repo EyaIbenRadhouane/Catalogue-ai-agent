@@ -23,7 +23,7 @@ public class Categorie {
     //tion est bidirectionnelle, mais que c’est l’entité Produit (qui possède l’attribut categorie)
     //qui est "propriétaire" de la relation en base de données. En termes SQL, cela signifie que JPA
     //va créer une clé étrangère categorie_id dans la table produits, et non une table de jointure.
-    @OneToMany(mappedBy = "categorie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "categorie", fetch = FetchType.LAZY)
     @JsonIgnore // Indispensable pour éviter la boucle infinie JSON lors de la sérialisation
     private List<Produit> produits;
 }

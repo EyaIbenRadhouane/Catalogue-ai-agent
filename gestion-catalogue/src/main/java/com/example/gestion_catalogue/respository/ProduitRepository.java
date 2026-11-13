@@ -20,6 +20,9 @@ public interface ProduitRepository extends JpaRepository<Produit,Long>{
     // ================================================================
     @Query("select p from Produit p where p.nom like %:x%")
     public List<Produit>rechercheParMotCle(@Param("x")String mc);
+
+    // Recherche par nom de catégorie (Produit.categorie.nom)
+    List<Produit> findByCategorieNomContains(String nomCategorie);
 }
 
 
