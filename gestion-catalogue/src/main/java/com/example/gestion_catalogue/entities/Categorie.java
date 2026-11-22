@@ -1,4 +1,4 @@
-package com.example.gestion_catalogue.entities;
+package org.example.mcpserver.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
