@@ -1,0 +1,63 @@
+<div class="fond">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+</div>
+
+<main class="carte">
+  <header class="entete">
+    <div class="logo">✦</div>
+    <div class="titre">
+      <h1>SmartCatalog AI</h1>
+      <p><span class="point"></span> En ligne </p>
+    </div>
+    @if (messages().length) {
+    <button class="ghost" (click)="effacer()" title="Effacer la conversation">Effacer</button>
+    }
+  </header>
+
+  <section class="zone" #zone>
+    @if (!messages().length) {
+    <div class="accueil">
+      <div class="orbe">✦</div>
+      <h2>Bonjour 👋</h2>
+      <p>Je vérifie pour vous les prix et la disponibilité des produits du catalogue.</p>
+      <div class="chips">
+        @for (s of suggestions; track s) {
+        <button class="chip" (click)="utiliser(s)">{{ s }}</button>
+        }
+      </div>
+    </div>
+    }
+
+    @for (m of messages(); track $index) {
+    <div class="ligne" [class.moi]="m.auteur === 'user'">
+      @if (m.auteur === 'bot') { <div class="avatar">✦</div> }
+      <div class="bulle" [class.erreur]="m.erreur">
+        @if (m.auteur === 'bot' && !m.erreur) {
+        <div class="md" [innerHTML]="m.texte | markdown"></div>
+        } @else {
+        {{ m.texte }}
+        }
+        <span class="heure">{{ m.heure }}</span>
+      </div>
+    </div>
+    }
+
+    @if (attente()) {
+    <div class="ligne">
+      <div class="avatar">✦</div>
+      <div class="bulle frappe"><i></i><i></i><i></i></div>
+    </div>
+    }
+  </section>
+
+  <form class="saisie" (ngSubmit)="envoyer()">
+    <input name="msg" [ngModel]="texte()" (ngModelChange)="texte.set($event)"
+           placeholder="Posez votre question sur un produit..." autocomplete="off">
+    <button type="submit" class="envoi" [disabled]="attente() || !texte().trim()" aria-label="Envoyer">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+    </button>
+  </form>
+</main>
