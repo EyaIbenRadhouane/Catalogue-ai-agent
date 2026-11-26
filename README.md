@@ -251,5 +251,4 @@ Merci de suivre les conventions [Conventional Commits](https://www.conventionalc
 ## Auteur
 
 **Eyal Ben Radhouane**
-GitHub : [@EyalbenRadhouane](https://github.com/EyalbenRadhouane)
 ---
