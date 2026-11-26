@@ -18,7 +18,7 @@
 
 ---
 
-## 📖 Description
+## Description
 
 **Catalogue AI Agent** est une application full-stack modulaire qui combine un backend **Spring Boot**, un frontend **Angular** et un serveur **MCP (Model Context Protocol)** permettant à un agent IA de manipuler dynamiquement le catalogue de produits via un chat intelligent.
 
@@ -30,18 +30,18 @@ L'agent IA est capable de :
 
 ---
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
 | Module | Description |
 |--------|-------------|
-| 🧩 **gestion-catalogue** | API REST Spring Boot pour la gestion CRUD des produits |
-| 💻 **chat-front** | Interface Angular avec chatbot IA intégré |
-| 🤖 **mcp-server** | Serveur MCP exposant les outils du catalogue à l'agent |
-| 🧠 **Agent IA** | Prompt système enrichi (rôle, règles, outils) |
+| **gestion-catalogue** | API REST Spring Boot pour la gestion CRUD des produits |
+| **chat-front** | Interface Angular avec chatbot IA intégré |
+| **mcp-server** | Serveur MCP exposant les outils du catalogue à l'agent |
+| **Agent IA** | Prompt système enrichi (rôle, règles, outils) |
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -68,27 +68,28 @@ L'agent IA est capable de :
 
 ---
 
-## 🛠️ Stack Technique
+## Stack Technique
 
 ### Backend
-- ☕ **Java 17+**
-- 🟢 **Spring Boot 3.x** (Web, Data JPA, Validation)
-- 🗄️ **PostgreSQL / H2** (base de données)
-- 🔧 **Maven** (gestion des dépendances)
+- **Java 17+**
+- **Spring Boot 3.x** (Web, Data JPA, Validation)
+- **MySQL (via XAMPP)** (base de données de développement)
+- **H2** (base de données en mémoire, pour les tests)
+- **Maven** (gestion des dépendances)
 
 ### Frontend
-- 🟠 **Angular 17+**
-- 📘 **TypeScript**
-- 🎨 **HTML5 / CSS3 / Bootstrap**
+- **Angular 17+**
+- **TypeScript**
+- **HTML5 / CSS3 / Bootstrap**
 
 ### IA & MCP
-- 🤖 **Agent IA** avec prompt système enrichi
-- 🔌 **MCP Server** (Model Context Protocol)
-- ⚙️ **Outils exposés** : `list_products`, `add_product`, `update_product`, `delete_product`, `search_products`
+- **Agent IA** avec prompt système enrichi
+- **MCP Server** (Model Context Protocol)
+- **Outils exposés** : `list_products`, `add_product`, `update_product`, `delete_product`, `search_products`
 
 ---
 
-## 📂 Structure du Projet
+## Structure du Projet
 
 ```
 catalogue-ai-agent/
@@ -110,9 +111,9 @@ catalogue-ai-agent/
 
 ---
 
-## 🚀 Installation
+## Installation
 
-### ✅ Prérequis
+### Prérequis
 
 | Outil | Version minimale | Lien |
 |-------|------------------|------|
@@ -122,14 +123,14 @@ catalogue-ai-agent/
 | Angular CLI | 17 | `npm install -g @angular/cli` |
 | Git | 2.40 | [git-scm.com](https://git-scm.com/) |
 
-### 📥 Cloner le dépôt
+### Cloner le dépôt
 
 ```bash
 git clone https://github.com/EyalbenRadhouane/catalogue-ai-agent.git
 cd catalogue-ai-agent
 ```
 
-### ⚙️ Backend — Spring Boot
+### Backend — Spring Boot
 
 ```bash
 cd gestion-catalogue
@@ -138,7 +139,7 @@ mvn spring-boot:run
 # ✅ API disponible sur http://localhost:8080
 ```
 
-### 🌐 Frontend — Angular
+### Frontend — Angular
 
 ```bash
 cd chat-front
@@ -147,7 +148,7 @@ ng serve
 # ✅ Interface disponible sur http://localhost:4200
 ```
 
-### 🤖 MCP Server
+### MCP Server
 
 ```bash
 cd mcp-server
@@ -158,7 +159,7 @@ mvn spring-boot:run
 
 ---
 
-## 🔌 Endpoints API (Exemples)
+## Endpoints API (Exemples)
 
 | Méthode | URL | Description |
 |---------|-----|-------------|
@@ -191,41 +192,45 @@ curl -X GET http://localhost:8080/api/products
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 Modifier `gestion-catalogue/src/main/resources/application.yml` :
 
-```yaml
+---
+yaml
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/catalogue_db
-    username: postgres
-    password: votre_mot_de_passe
+    url: jdbc:mysql://localhost:3306/catalogue_db
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
 
 ai:
-  model: gpt-4
-  api-key: ${OPENAI_API_KEY}
-```
+  model: gemini
+  api-key: ${GEMINI_API_KEY}
+---
+
+## Roadmap
+
+- CRUD produits (Spring Boot)
+- Interface chat (Angular)
+- Serveur MCP
+- Enrichissement du prompt système (rôle, règles, outils)
+- Authentification JWT
+- Dashboard analytique
+- Déploiement Docker
+- Tests unitaires & intégration
 
 ---
 
-## 🗺️ Roadmap
-
-- [x] CRUD produits (Spring Boot)
-- [x] Interface chat (Angular)
-- [x] Serveur MCP
-- [x] Enrichissement du prompt système (rôle, règles, outils)
-- [ ] Authentification JWT
-- [ ] Dashboard analytique
-- [ ] Déploiement Docker
-- [ ] Tests unitaires & intégration
-
----
-
-## 🤝 Contribuer
+## Contribuer
 
 Les contributions sont les bienvenues !
 
@@ -244,25 +249,17 @@ Merci de suivre les conventions [Conventional Commits](https://www.conventionalc
 
 ---
 
-## 📝 Licence
+## Licence
 
 Ce projet est sous licence **MIT** — voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ---
 
-## 👤 Auteur
+## Auteur
 
 **Eyal Ben Radhouane**
 
-- 🐙 GitHub : [@EyalbenRadhouane](https://github.com/EyalbenRadhouane)
-- 🎓 Université de Sousse
+- GitHub : [@EyalbenRadhouane](https://github.com/EyalbenRadhouane)
+
 
 ---
-
-<div align="center">
-
-**⭐ Si ce projet vous plaît, laissez une étoile sur GitHub !**
-
-Made with ❤️ using Spring Boot & Angular
-
-</div>
