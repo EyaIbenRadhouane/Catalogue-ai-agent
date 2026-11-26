@@ -248,18 +248,8 @@ Merci de suivre les conventions [Conventional Commits](https://www.conventionalc
 - `test:` ajout de tests
 
 ---
-
-## Licence
-
-Ce projet est sous licence **MIT** — voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
----
-
 ## Auteur
 
 **Eyal Ben Radhouane**
-
-- GitHub : [@EyalbenRadhouane](https://github.com/EyalbenRadhouane)
-
-
+GitHub : [@EyalbenRadhouane](https://github.com/EyalbenRadhouane)
 ---
