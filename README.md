@@ -251,11 +251,4 @@ Merci de suivre les conventions [Conventional Commits](https://www.conventionalc
 ## Auteur
 
 **Eyal Ben Radhouane**
-<<<<<<< HEAD
 ---
-=======
-
-- 🐙 GitHub : [@EyalbenRadhouane](https://github.com/EyaIbenRadhouane)
----
-
->>>>>>> e8ffac5 (feat: add chat-front, mcp-server and AI tools)

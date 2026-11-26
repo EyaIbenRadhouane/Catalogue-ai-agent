@@ -1,8 +1,5 @@
-package com.example.gestion_catalogue.entities;
-
 import jakarta.persistence.*;
 import lombok.*;
-import com.example.gestion_catalogue.entities.Categorie;
 
 @Entity
 @Getter

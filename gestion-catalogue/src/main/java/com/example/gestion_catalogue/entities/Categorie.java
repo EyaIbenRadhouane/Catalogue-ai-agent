@@ -1,4 +1,3 @@
-package com.example.gestion_catalogue.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
